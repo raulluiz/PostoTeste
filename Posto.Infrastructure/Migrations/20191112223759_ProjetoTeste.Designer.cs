@@ -10,8 +10,8 @@ using Posto.Infrastructure.Context;
 namespace Posto.Infrastructure.Migrations
 {
     [DbContext(typeof(PostoContext))]
-    [Migration("20190907134117_Programacao_PreventivaTecnico")]
-    partial class Programacao_PreventivaTecnico
+    [Migration("20191112223759_ProjetoTeste")]
+    partial class ProjetoTeste
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,82 @@ namespace Posto.Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.Chamado", b =>
+                {
+                    b.Property<int>("Id_Chamado")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Corretiva");
+
+                    b.Property<DateTime?>("Data_Final");
+
+                    b.Property<DateTime>("Data_Inicial");
+
+                    b.Property<DateTime?>("Data_Prazo");
+
+                    b.Property<string>("Defeito_Encontrado_Tecnico");
+
+                    b.Property<string>("Descricao_Problema_Cliente");
+
+                    b.Property<int>("Id_Cliente");
+
+                    b.Property<int>("Id_Empresa");
+
+                    b.Property<int>("Id_Serie");
+
+                    b.Property<int?>("Id_Tecnico");
+
+                    b.Property<string>("Nome_Cliente");
+
+                    b.Property<string>("Nome_Tecnico");
+
+                    b.Property<byte?>("Nota_Eficacia");
+
+                    b.Property<byte?>("Nota_Tecnico");
+
+                    b.Property<byte?>("Nota_Tempo");
+
+                    b.Property<byte?>("Status");
+
+                    b.HasKey("Id_Chamado");
+
+                    b.ToTable("Chamado");
+                });
+
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.ChamadoImagem", b =>
+                {
+                    b.Property<int>("Id_Chamado");
+
+                    b.Property<int>("Id_Imagem");
+
+                    b.HasKey("Id_Chamado", "Id_Imagem");
+
+                    b.ToTable("ChamadoImagem");
+                });
+
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.ChamadoProduto", b =>
+                {
+                    b.Property<int>("Id_Chamado");
+
+                    b.Property<int>("Id_Produto");
+
+                    b.HasKey("Id_Chamado", "Id_Produto");
+
+                    b.ToTable("ChamadoProduto");
+                });
+
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.ChamadoSubConjunto", b =>
+                {
+                    b.Property<int>("Id_Chamado");
+
+                    b.Property<int>("Id_SubConjunto");
+
+                    b.HasKey("Id_Chamado", "Id_SubConjunto");
+
+                    b.ToTable("ChamadoSubConjunto");
+                });
 
             modelBuilder.Entity("Posto.ApplicationCore.Entities.Cliente", b =>
                 {
@@ -37,6 +113,8 @@ namespace Posto.Infrastructure.Migrations
 
                     b.Property<int>("Id_Usuario");
 
+                    b.Property<string>("Nome");
+
                     b.Property<string>("PhoneNumber");
 
                     b.Property<DateTime>("Prazo_Cliente");
@@ -52,6 +130,40 @@ namespace Posto.Infrastructure.Migrations
                     b.ToTable("Cliente");
                 });
 
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.ClienteSerie", b =>
+                {
+                    b.Property<int>("Id_Cliente");
+
+                    b.Property<int>("Id_Serie");
+
+                    b.HasKey("Id_Cliente", "Id_Serie");
+
+                    b.ToTable("ClienteSerie");
+                });
+
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.Distribuidora", b =>
+                {
+                    b.Property<int>("Id_Distribuidora")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Cpf");
+
+                    b.Property<string>("Email");
+
+                    b.Property<int>("Id_Usuario");
+
+                    b.Property<string>("Nome");
+
+                    b.Property<string>("Telefone");
+
+                    b.HasKey("Id_Distribuidora");
+
+                    b.HasIndex("Id_Usuario");
+
+                    b.ToTable("Distribuidora");
+                });
+
             modelBuilder.Entity("Posto.ApplicationCore.Entities.Empresa", b =>
                 {
                     b.Property<int>("IdEmpresa")
@@ -63,14 +175,14 @@ namespace Posto.Infrastructure.Migrations
 
                     b.Property<long>("CNPJ");
 
-                    b.Property<string>("Nome")
-                        .HasColumnName("NOME")
-                        .HasMaxLength(200);
+                    b.Property<string>("Nome");
+
+                    b.Property<string>("Razao");
 
                     b.HasKey("IdEmpresa")
                         .HasName("ID_EMPRESA");
 
-                    b.ToTable("EMPRESAS");
+                    b.ToTable("Empresa");
                 });
 
             modelBuilder.Entity("Posto.ApplicationCore.Entities.EmpresaUsuario", b =>
@@ -99,6 +211,31 @@ namespace Posto.Infrastructure.Migrations
                     b.HasKey("Id_Endereco");
 
                     b.ToTable("Endereco");
+                });
+
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.Equipamento", b =>
+                {
+                    b.Property<int>("Id_Equipamento")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IdEmpresa");
+
+                    b.Property<bool>("Ativo");
+
+                    b.Property<string>("Modelo_Bomba");
+
+                    b.Property<string>("Numero_Serie");
+
+                    b.Property<byte>("Tipo");
+
+                    b.HasKey("Id_Equipamento", "IdEmpresa");
+
+                    b.HasAlternateKey("Id_Equipamento");
+
+                    b.HasIndex("IdEmpresa");
+
+                    b.ToTable("Equipamento");
                 });
 
             modelBuilder.Entity("Posto.ApplicationCore.Entities.Exemplo", b =>
@@ -141,6 +278,68 @@ namespace Posto.Infrastructure.Migrations
                     b.ToTable("EXEMPLOS_ITENS");
                 });
 
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.Imagem", b =>
+                {
+                    b.Property<int>("Id_Imagem")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Id_Usuario");
+
+                    b.Property<byte[]>("ImagemByte");
+
+                    b.Property<byte>("Tipo");
+
+                    b.HasKey("Id_Imagem");
+
+                    b.ToTable("Imagem");
+                });
+
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.Produto", b =>
+                {
+                    b.Property<int>("Id_Produto")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IdEmpresa");
+
+                    b.Property<int>("Id_Serie");
+
+                    b.Property<bool>("Ativo");
+
+                    b.Property<string>("Nome");
+
+                    b.HasKey("Id_Produto", "IdEmpresa", "Id_Serie");
+
+                    b.HasIndex("IdEmpresa");
+
+                    b.ToTable("Produto");
+                });
+
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.SerieSubConjunto", b =>
+                {
+                    b.Property<int>("Id_SubConjunto");
+
+                    b.Property<int>("Id_Serie");
+
+                    b.HasKey("Id_SubConjunto", "Id_Serie");
+
+                    b.ToTable("SerieSubConjunto");
+                });
+
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.SubConjunto", b =>
+                {
+                    b.Property<int>("Id_SubConjunto")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nome");
+
+                    b.HasKey("Id_SubConjunto");
+
+                    b.ToTable("SubConjunto");
+                });
+
             modelBuilder.Entity("Posto.ApplicationCore.Entities.Tecnico", b =>
                 {
                     b.Property<int>("Id_Tecnico")
@@ -149,7 +348,11 @@ namespace Posto.Infrastructure.Migrations
 
                     b.Property<long>("Cpf");
 
+                    b.Property<int>("Id_Empresa");
+
                     b.Property<int>("Id_Usuario");
+
+                    b.Property<string>("Nome");
 
                     b.Property<DateTime>("Programacao_Preventiva");
 
@@ -184,10 +387,18 @@ namespace Posto.Infrastructure.Migrations
 
                     b.HasIndex("Id_Endereco");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Usuario");
                 });
 
             modelBuilder.Entity("Posto.ApplicationCore.Entities.Cliente", b =>
+                {
+                    b.HasOne("Posto.ApplicationCore.Entities.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("Id_Usuario")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.Distribuidora", b =>
                 {
                     b.HasOne("Posto.ApplicationCore.Entities.Usuario", "Usuario")
                         .WithMany()
@@ -208,11 +419,27 @@ namespace Posto.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.Equipamento", b =>
+                {
+                    b.HasOne("Posto.ApplicationCore.Entities.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("IdEmpresa")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Posto.ApplicationCore.Entities.ExemploItem", b =>
                 {
                     b.HasOne("Posto.ApplicationCore.Entities.Exemplo", "Exemplo")
                         .WithMany("Itens")
                         .HasForeignKey("ExemploId");
+                });
+
+            modelBuilder.Entity("Posto.ApplicationCore.Entities.Produto", b =>
+                {
+                    b.HasOne("Posto.ApplicationCore.Entities.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("IdEmpresa")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Posto.ApplicationCore.Entities.Tecnico", b =>
