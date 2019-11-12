@@ -1,0 +1,126 @@
+﻿@model Posto.ApplicationCore.ViewModels.ClienteVM
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Novo Cliente</h5>
+                <div class="ibox-tools">
+                </div>
+            </div>
+            <div class="ibox-content">
+                <form method="POST">
+                    @Html.HiddenFor(p => p.Id_Cliente)
+                    @Html.HiddenFor(p => p.Id_Usuario)
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">CNPJ</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(p => p.Cnpj, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.Cnpj, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nome do Cliente</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(p => p.NomeCliente, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.NomeCliente, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nome do Usuário</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(p => p.Nome, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.Nome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">E-Mail</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(p => p.Email, new { @class = "form-control", type = "email" })
+                            @Html.ValidationMessageFor(p => p.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Telefone</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(p => p.PhoneNumber, new { @class = "form-control", type = "tel" })
+                            @Html.ValidationMessageFor(p => p.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Endereço</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(p => p.Endereco_Complemento, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.Endereco_Complemento, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Link do Google Maps</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(p => p.LinkGoogleMaps, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.LinkGoogleMaps, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Ativo</label>
+                        <div class="col-sm-10">
+                            @Html.CheckBoxFor(p => p.Ativo, new { @class = "form-control align-left" })
+                            @Html.ValidationMessageFor(p => p.Ativo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Data Preventiva do Mês</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(p => p.Data_Preventiva_Mes, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+                            @Html.ValidationMessageFor(p => p.Data_Preventiva_Mes, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Razão Social</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(p => p.Razao_Social, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.Razao_Social, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Prazo Cliente</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(p => p.Prazo_Cliente, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+                            @Html.ValidationMessageFor(p => p.Prazo_Cliente, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Programação Preventiva</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(p => p.Programacao_Preventiva, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.Programacao_Preventiva, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Séries</label>
+                        <div class="col-sm-10">
+                            <select asp-for="Series" asp-items="@ViewBag.Series" class="select2 form-control" multiple id="Series" name="Series"></select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-sm btn-white" type="submit">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <environment names="Development,Staging,Production">
+        <script src="~/js/Tela/Cliente/cliente_edit.js"></script>
+    </environment>
+}

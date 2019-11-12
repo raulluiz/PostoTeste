@@ -1,0 +1,146 @@
+﻿@model Posto.ApplicationCore.ViewModels.ChamadoVM
+
+@{ 
+    List<string> imagensCliente = ViewBag.ImagensCliente;
+}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Chamado Cliente</h5>
+                    <div class="ibox-tools">
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Séries</label>
+                        <div class="col-sm-10">
+                            <select asp-for="Series" asp-items="@ViewBag.SeriesCliente" class="select2 form-control" id="Series" name="Series">
+                                <option>Escolha um produto</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">SubConjunto</label>
+                        <div class="col-sm-10">
+                            <select asp-for="SubConjuntos" asp-items="@ViewBag.SubConjuntosCliente" class="select2 form-control" id="SubConjuntosCliente" name="SubConjuntos">
+                                <option>Escolha um SubConjunto</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Produto</label>
+                        <div class="col-sm-10">
+                            <select asp-for="Produtos" asp-items="@ViewBag.ProdutosCliente" class="select2 form-control" id="ProdutosCliente" name="Produtos">
+                                <option>Escolha um produto</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Descreva o problema</label>
+                        <div class="col-sm-10">
+                            <textarea asp-for="Descricao_Problema_Cliente" disabled class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Imagens</label>
+                        <div class="col-sm-10">
+                            <div class="col-lg-5">
+                                <div class="ibox ">
+
+                                    <div class="ibox-content" style="border:none">
+                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                @foreach (string item in imagensCliente)
+                                                {
+                                                    var src = String.Format("data:image/gif;base64,{0}", item);
+                                                    if (item == imagensCliente.First())
+                                                    {
+                                                        
+                                                        <div class="carousel-item active">
+                                                            <img class="d-block w-100" src="@src">
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="carousel-item">
+                                                            <img class="d-block w-100" src="@src">
+                                                        </div>
+                                                    }
+
+                                                }
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Finalizar Chamado</h5>
+                    <div class="ibox-tools">
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="POST" enctype="multipart/form-data">
+                        <input asp-for="Id_Serie" hidden class="form-control" />
+                        <input asp-for="Produtos" hidden class="form-control" />
+                        <input asp-for="SubConjuntos" hidden class="form-control" />
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">SubConjunto</label>
+                            <div class="col-sm-10">
+                                <select asp-for="SubConjuntosTecnico" asp-items="@ViewBag.SubConjuntoTecnico" class="select2 form-control" id="SubConjuntosCliente" name="SubConjuntos">
+                                    <option>Escolha um SubConjunto</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Defeito Encontrado</label>
+                            <div class="col-sm-10">
+                                <textarea asp-for="Defeito_Encontrado_Tecnico" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Anexos</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="files" multiple />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                @Html.ActionLink("Voltar", "Index", null, null, new { @class = "btn btn-sm btn-white" })
+                                <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+@section Scripts {
+    <environment names="Development,Staging,Production">
+        <script src="~/js/Tela/Chamado/chamado_finalizado.js"></script>
+    </environment>
+}

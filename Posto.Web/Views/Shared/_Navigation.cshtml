@@ -1,0 +1,66 @@
+﻿@using Posto.ApplicationCore.Enum
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="profile-element">
+                    <select id="empresa_global" class=" form-control"></select>
+                </div>
+                <div class="logo-element">
+                    <a href="/Home">
+                        <img src="~/images/Logos/Logo Dislub.png" style="width:50px" />
+                    </a>
+                </div>
+            </li>
+            <li class="@Html.IsSelected(controller: "Chamado", action: "Index")">
+                <a href="@Url.Action("Index", "Chamado")"><i class="fa fa-file-text"></i> <span class="nav-label">Chamado</span></a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Dashboard", action: "Index")">
+                <a href="@Url.Action("Index", "Dashboard")"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Dashboard</span></a>
+            </li>
+            @*<li class="@Html.IsSelected(controller: "Home", action: "Minor")">
+            <a href="@Url.Action("Minor", "Home")"><i class="fa fa-server"></i> <span class="nav-label">Minor</span></a>
+        </li>*@
+            @if (User.HasClaim(c => c.Type == "Perfil" && c.Value == EnumPerfil.Administrador.ToString()))
+            {
+                <li class="@Html.IsSelected(controller: "Configuracao")">
+                    <a href="#"><i class="fa fa-cogs"></i> <span class="nav-label" data-i18n="nav.tables">Configração</span><span class="fa arrow"></span></a>
+
+                    <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Configuracao", cssClass: "in")">
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Usuario")"> Usuarios</a></li>
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Distribuidora")"> Distribuidora</a></li>
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Perfil")"> Perfil</a></li>
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Empresa")"> Empresa</a></li>
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Cliente")"> Clientes</a></li>
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Tecnico")"> Técnicos</a></li>
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Equipamento")"> Equipamento</a></li>
+                    </ul>
+                </li>
+            }
+
+            @if (User.HasClaim(c => c.Type == "Perfil" && c.Value == EnumPerfil.Distribuidora.ToString()))
+            {
+                <li class="@Html.IsSelected(controller: "Usuario")">
+                    <a href="#"><i class="fa fa-users"></i> <span class="nav-label" data-i18n="nav.tables">Usuários</span><span class="fa arrow"></span></a>
+
+                    <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Configuracao", cssClass: "in")">
+
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Cliente")"> Cliente</a></li>
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Tecnico")"> Técnico</a></li>
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Distribuidora")"> Distribuidora</a></li>
+                    </ul>
+                </li>
+
+                <li class="@Html.IsSelected(controller: "Configuracao")">
+                    <a href="#"><i class="fa fa-cogs"></i> <span class="nav-label" data-i18n="nav.tables">Configração</span><span class="fa arrow"></span></a>
+
+                    <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Configuracao", cssClass: "in")">
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Empresa")"> Empresa</a></li>
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Equipamento")"> Equipamento</a></li>
+                    </ul>
+                </li>
+            }
+
+        </ul>
+    </div>
+</nav>

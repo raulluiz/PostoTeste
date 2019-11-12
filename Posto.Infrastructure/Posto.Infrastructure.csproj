@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190904031630_cliente.cs" />
+    <Compile Remove="Migrations\20190904031630_cliente.Designer.cs" />
+    <Compile Remove="Migrations\20190904032535_cliente.cs" />
+    <Compile Remove="Migrations\20190904032535_cliente.Designer.cs" />
+    <Compile Remove="Migrations\20190904040840_Tecnico.cs" />
+    <Compile Remove="Migrations\20190904040840_Tecnico.Designer.cs" />
+    <Compile Remove="Migrations\20190904041005_Tecnico.cs" />
+    <Compile Remove="Migrations\20190904041005_Tecnico.Designer.cs" />
+    <Compile Remove="Migrations\20190904041228_Tecnico.cs" />
+    <Compile Remove="Migrations\20190904041228_Tecnico.Designer.cs" />
+    <Compile Remove="Migrations\20190904041412_Tecnico.cs" />
+    <Compile Remove="Migrations\20190904041412_Tecnico.Designer.cs" />
+    <Compile Remove="Migrations\20190904042120_Tecnico.cs" />
+    <Compile Remove="Migrations\20190904042120_Tecnico.Designer.cs" />
+    <Compile Remove="Migrations\20190904042328_Tecnico.cs" />
+    <Compile Remove="Migrations\20190904042328_Tecnico.Designer.cs" />
+    <Compile Remove="Migrations\20190904043214_Tecnico.cs" />
+    <Compile Remove="Migrations\20190904043214_Tecnico.Designer.cs" />
+    <Compile Remove="Migrations\20190904043755_Tecnico.cs" />
+    <Compile Remove="Migrations\20190904043755_Tecnico.Designer.cs" />
+    <Compile Remove="Migrations\20190904230234_emailPhoneCliente.cs" />
+    <Compile Remove="Migrations\20190904230234_emailPhoneCliente.Designer.cs" />
+    <Compile Remove="Migrations\20190905010004_emailPhoneCliente.cs" />
+    <Compile Remove="Migrations\20190905010004_emailPhoneCliente.Designer.cs" />
+    <Compile Remove="Migrations\20190905010429_emailPhoneCliente.cs" />
+    <Compile Remove="Migrations\20190905010429_emailPhoneCliente.Designer.cs" />
+    <Compile Remove="Migrations\20190907205833_SerieProduto.cs" />
+    <Compile Remove="Migrations\20190907205833_SerieProduto.Designer.cs" />
+    <Compile Remove="Migrations\20190907210203_SerieProduto.cs" />
+    <Compile Remove="Migrations\20190907210203_SerieProduto.Designer.cs" />
+    <Compile Remove="Migrations\20190907210936_SerieProduto.cs" />
+    <Compile Remove="Migrations\20190907210936_SerieProduto.Designer.cs" />
+    <Compile Remove="Migrations\20190907211612_SerieProduto.cs" />
+    <Compile Remove="Migrations\20190907211612_SerieProduto.Designer.cs" />
+    <Compile Remove="Migrations\20190907222305_SerieProduto.cs" />
+    <Compile Remove="Migrations\20190907222305_SerieProduto.Designer.cs" />
+    <Compile Remove="Migrations\20190908140356_ClienteSerie.cs" />
+    <Compile Remove="Migrations\20190908140356_ClienteSerie.Designer.cs" />
+    <Compile Remove="Migrations\20190908140547_ClienteSerie.cs" />
+    <Compile Remove="Migrations\20190908140547_ClienteSerie.Designer.cs" />
+    <Compile Remove="Migrations\20190908141111_ClienteSerie.cs" />
+    <Compile Remove="Migrations\20190908141111_ClienteSerie.Designer.cs" />
+    <Compile Remove="Migrations\20190910212953_errorMigration.cs" />
+    <Compile Remove="Migrations\20190910212953_errorMigration.Designer.cs" />
+    <Compile Remove="Migrations\20190911162204_SerieSubConjuntoLigacao.cs" />
+    <Compile Remove="Migrations\20190911162204_SerieSubConjuntoLigacao.Designer.cs" />
+    <Compile Remove="Migrations\20191104032803_FK_DistribuidoraUsuario.cs" />
+    <Compile Remove="Migrations\20191104032803_FK_DistribuidoraUsuario.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Posto.ApplicationCore\Posto.ApplicationCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.EntityFrameworkCore">
+      <HintPath>..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.entityframeworkcore\2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

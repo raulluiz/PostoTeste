@@ -1,0 +1,39 @@
+﻿@page
+@model Posto.ApplicationCore.ViewModels.ProdutoVM
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Editar Produto</h5>
+                <div class="ibox-tools">
+                </div>
+            </div>
+            <div class="ibox-content">
+                <form method="POST">
+                    @Html.HiddenFor(p => p.Id_Serie)
+                    @Html.HiddenFor(p => p.Id_Produto)
+                    @Html.HiddenFor(p => p.IdEmpresa)
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nome</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(p => p.Nome, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.Nome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-sm btn-white" type="submit">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <environment names="Development,Staging,Production">
+        <script src="~/js/Tela/Usuario/usuario_novo.js"></script>
+    </environment>
+}
