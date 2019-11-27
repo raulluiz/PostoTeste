@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Teste.Posto
 {
-    class UsuarioRepository : IUsuarioService, IBaseService<Usuario>
+    class UsuarioRepositoryTeste : IUsuarioService, IBaseService<Usuario>
     {
         List<Usuario> lista = new List<Usuario>();
         public Usuario Add(Usuario entity)

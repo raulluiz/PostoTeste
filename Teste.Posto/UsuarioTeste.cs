@@ -27,8 +27,8 @@ namespace Teste.Posto
             Usuario raul = new Usuario("Raul", true, "09719336420", "", EnumPerfil.Administrador);
 
             // Act
-            var repo = new UsuarioRepository();
-            var teste = repo.GetAll();
+            var repo = new UsuarioRepositoryTeste();
+            var teste = repo.GetById();
 
             // Assert
             Assert.Equal("", "");
