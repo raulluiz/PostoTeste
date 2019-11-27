@@ -25,6 +25,17 @@ namespace Posto.ApplicationCore.Entities
 
         }
 
+        public Usuario(int Id_Usuario, string Nome, bool Ativo, string Cpf, string IdentityUser, EnumPerfil Perfil, int? Id_Endereco)
+        {
+            this.Nome = Nome;
+            this.Ativo = Ativo;
+            this.Cpf = Cpf;
+            this.IdentityUser = IdentityUser;
+            this.Perfil = Perfil;
+            this.Id_Usuario = Id_Usuario;
+            this.Id_Endereco = Id_Endereco;
+        }
+
         public void Inativar()
         {
             this.Ativo = false;
