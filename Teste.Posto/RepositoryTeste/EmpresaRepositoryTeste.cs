@@ -1,18 +1,16 @@
 ﻿using Posto.ApplicationCore.Entities;
 using Posto.ApplicationCore.Interfaces.Repository;
-using Posto.ApplicationCore.Interfaces.Services;
 using Posto.Infrastructure.Context;
 using Posto.Infrastructure.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Text;
 
-namespace Teste.Posto
+namespace Teste.Posto.RepositoryTeste
 {
-    class UsuarioRepositoryTeste : BaseRepository<Usuario>, IUsuarioRepository
+    class EmpresaRepositoryTeste : BaseRepository<Empresa>, IEmpresaRepository
     {
-        public UsuarioRepositoryTeste(PostoContext dbContext) : base(dbContext)
+        protected EmpresaRepositoryTeste(PostoContext dbContext) : base(dbContext)
         {
         }
     }

@@ -8,9 +8,9 @@ using System.Text;
 
 namespace Teste.Posto.ServiceTeste
 {
-    class UsuarioServiceTeste : BaseService<Usuario>, IUsuarioService
+    public class UsuarioServiceTeste : BaseService<Usuario>, IUsuarioService
     {
-        private readonly IUsuarioRepository _usuarioRepository;
+        public readonly IUsuarioRepository _usuarioRepository;
         public UsuarioServiceTeste(IUsuarioRepository usuarioRepository) : base(usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;

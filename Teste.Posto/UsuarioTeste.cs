@@ -2,6 +2,7 @@
 using Posto.ApplicationCore.Entities;
 using Posto.ApplicationCore.Enum;
 using Posto.ApplicationCore.Interfaces.Services;
+using Posto.Infrastructure.Context;
 using Posto.Web.Controllers;
 using System;
 using System.Collections.Generic;
@@ -25,10 +26,10 @@ namespace Teste.Posto
         {
             // Arrange
             Usuario raul = new Usuario("Raul", true, "09719336420", "", EnumPerfil.Administrador);
-
+            PostoContext postoContext = new PostoContext();
             // Act
-            var repo = new UsuarioRepositoryTeste();
-            var teste = repo.GetById();
+            UsuarioRepositoryTeste repo = new UsuarioRepositoryTeste(postoContext);
+            var teste = repo.GetById(2);
 
             // Assert
             Assert.Equal("", "");

@@ -1,18 +1,16 @@
 ﻿using Posto.ApplicationCore.Entities;
 using Posto.ApplicationCore.Interfaces.Repository;
-using Posto.ApplicationCore.Interfaces.Services;
 using Posto.Infrastructure.Context;
 using Posto.Infrastructure.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Text;
 
-namespace Teste.Posto
+namespace Teste.Posto.RepositoryTeste
 {
-    class UsuarioRepositoryTeste : BaseRepository<Usuario>, IUsuarioRepository
+    class ChamadoImagemRepositoryTeste : BaseRepository<ChamadoImagem>, IChamadoImagemRepository
     {
-        public UsuarioRepositoryTeste(PostoContext dbContext) : base(dbContext)
+        protected ChamadoImagemRepositoryTeste(PostoContext dbContext) : base(dbContext)
         {
         }
     }
