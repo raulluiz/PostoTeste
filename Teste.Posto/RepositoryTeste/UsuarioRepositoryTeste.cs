@@ -12,7 +12,7 @@ namespace Teste.Posto
 {
     class UsuarioRepositoryTeste : BaseRepository<Usuario>, IUsuarioRepository
     {
-        protected UsuarioRepositoryTeste(PostoContext dbContext) : base(dbContext)
+        public UsuarioRepositoryTeste(PostoContext dbContext) : base(dbContext)
         {
         }
     }
