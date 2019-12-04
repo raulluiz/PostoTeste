@@ -21,5 +21,6 @@ namespace Posto.ApplicationCore.Entities
         public Cliente() { }
 
         public Usuario Usuario { get; set; }
+        public int Id_Equipamento { get; set; }
     }
 }
