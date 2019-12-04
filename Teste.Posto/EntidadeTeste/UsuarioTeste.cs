@@ -37,8 +37,6 @@ namespace Teste.Posto
             var obj1Str = JsonConvert.SerializeObject(raulRepository);
             var obj2Str = JsonConvert.SerializeObject(raul);
             Assert.Equal(obj1Str, obj2Str);
-
-            //Assert.Equals(raul, teste);
         }
 
     }
