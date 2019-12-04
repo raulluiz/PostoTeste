@@ -1,4 +1,5 @@
 ﻿using Moq;
+using Newtonsoft.Json;
 using Posto.ApplicationCore.Entities;
 using Posto.ApplicationCore.Enum;
 using Posto.ApplicationCore.Interfaces.Services;
@@ -25,14 +26,19 @@ namespace Teste.Posto
         public void PegarUsuario()
         {
             // Arrange
-            Usuario raul = new Usuario("Raul", true, "09719336420", "", EnumPerfil.Administrador);
+            Usuario raul = new Usuario("Raul", true, "09719336420", "ba694ae5-0c7f-4500-9012-e026644467f2", EnumPerfil.Administrador);
+            raul.Id_Usuario = 2;
             PostoContext postoContext = new PostoContext();
             // Act
             UsuarioRepositoryTeste repo = new UsuarioRepositoryTeste(postoContext);
-            var teste = repo.GetById(2);
+            var raulRepository = repo.GetById(2);
 
             // Assert
-            Assert.Equal("", "");
+            var obj1Str = JsonConvert.SerializeObject(raulRepository);
+            var obj2Str = JsonConvert.SerializeObject(raul);
+            Assert.Equal(obj1Str, obj2Str);
+
+            //Assert.Equals(raul, teste);
         }
 
     }
