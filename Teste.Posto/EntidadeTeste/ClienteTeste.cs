@@ -5,6 +5,7 @@ using Posto.Infrastructure.Context;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Teste.Posto.RepositoryTeste;
 using Xunit;
 
 namespace Teste.Posto.EntidadeTeste
@@ -14,16 +15,16 @@ namespace Teste.Posto.EntidadeTeste
         public void pegarCliente()
         {
             // Arrange
-            Cliente rodrigo = new Cliente("");
-            rodrigo.Id_Equipamento = 1;
+            Cliente cliente = new Cliente();
+            cliente.Id_Equipamento = 1;
             PostoContext postoContext = new PostoContext();
             // Act
-            UsuarioRepositoryTeste repo = new UsuarioRepositoryTeste(postoContext);
-            var rodrigoRepository = repo.GetById(1);
+            ClienteRepositoryTeste repo = new ClienteRepositoryTeste(postoContext);
+            var clienteRepository = repo.GetById(1);
 
             // Assert
-            var obj1Str = JsonConvert.SerializeObject(rodrigoRepository);
-            var obj2Str = JsonConvert.SerializeObject(rodrigo);
+            var obj1Str = JsonConvert.SerializeObject(clienteRepository);
+            var obj2Str = JsonConvert.SerializeObject(cliente);
             Assert.Equal(obj1Str, obj2Str);
         }
     }

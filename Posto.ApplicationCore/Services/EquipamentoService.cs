@@ -25,13 +25,14 @@ namespace Posto.ApplicationCore.Services
         //    throw new NotImplementedException();
         //}
 
-        public void SalvarEquipamento(EquipamentoVM equipamentoVM)
+        public string SalvarEquipamento(EquipamentoVM equipamentoVM)
         {
             var serie = _mapper.Map<Equipamento>(equipamentoVM);
             _serieRepository.Add(serie);
+            return "Salvo com sucesso!";
         }
 
-        public void UpdateEquipamento(EquipamentoVM equipamentoVM)
+        public string UpdateEquipamento(EquipamentoVM equipamentoVM)
         {
             var serie = _serieRepository.Get(s => s.Id_Equipamento == equipamentoVM.Id_Equipamento && s.IdEmpresa == equipamentoVM.IdEmpresa).FirstOrDefault();
             serie.Ativo = equipamentoVM.Ativo;
@@ -39,13 +40,16 @@ namespace Posto.ApplicationCore.Services
             serie.Numero_Serie = equipamentoVM.Numero_Serie;
             serie.Tipo = equipamentoVM.Tipo;
             _serieRepository.Update(serie);
+
+            return "Alterado com sucesso!";
         }
 
-        public void RemoverEquipamento(int id, int idEmpresa)
+        public string RemoverEquipamento(int id, int idEmpresa)
         {
             var serie = _serieRepository.Get(s => s.Id_Equipamento == id && s.IdEmpresa == idEmpresa).FirstOrDefault();
             serie.Inativar();
             _serieRepository.Update(serie);
+            return "Removido com sucesso!";
         }
     }
 }

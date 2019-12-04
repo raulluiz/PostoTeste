@@ -4,25 +4,29 @@ using Posto.Infrastructure.Context;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Teste.Posto.RepositoryTeste;
 using Xunit;
 
 namespace Teste.Posto.EntidadeTeste
 {
     public class TecnicoTeste
     {
+        [Fact]
         public void PegarTecnicoTeste()
         {
             // Arrange
-            Tecnico raul = new Tecnico(3,"",new DateTime(),1);
-            raul.Id_Usuario = 2;
+            Tecnico tecnico = new Tecnico(1002, 34475046092, Convert.ToDateTime("2019-12-25T13:15:00"), 1);
+            tecnico.Id_Tecnico= 1;
+            tecnico.Nome = "tecnico";
+
             PostoContext postoContext = new PostoContext();
             // Act
-            UsuarioRepositoryTeste repo = new UsuarioRepositoryTeste(postoContext);
-            var raulRepository = repo.GetById(2);
+            TecnicoRepositoryTeste repo = new TecnicoRepositoryTeste(postoContext);
+            var tecnicoRepository = repo.GetById(1);
 
             // Assert
-            var obj1Str = JsonConvert.SerializeObject(raulRepository);
-            var obj2Str = JsonConvert.SerializeObject(raul);
+            var obj1Str = JsonConvert.SerializeObject(tecnicoRepository);
+            var obj2Str = JsonConvert.SerializeObject(tecnico);
             Assert.Equal(obj1Str, obj2Str);
         }
     }

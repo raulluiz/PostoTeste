@@ -58,7 +58,7 @@ namespace Posto.Web.Controllers
                 string empresa_Global = Request.Cookies["empresa_global"];
                 equipamento.IdEmpresa = Convert.ToInt32(empresa_Global);
                 equipamento.Ativo = true;
-                _equipamentoService.SalvarEquipamento(equipamento);
+                var mensagem = _equipamentoService.SalvarEquipamento(equipamento);
                 return Redirect("Index");
             }
             catch (Exception)
@@ -91,7 +91,7 @@ namespace Posto.Web.Controllers
         {
             try
             {
-                _equipamentoService.UpdateEquipamento(equipamento);
+                var mensagem = _equipamentoService.UpdateEquipamento(equipamento);
                 return Redirect("Index");
             }
             catch (Exception)
@@ -108,8 +108,8 @@ namespace Posto.Web.Controllers
             try
             {
                 var empresa_Global = Convert.ToInt32(Request.Cookies["empresa_global"]);
-                _equipamentoService.RemoverEquipamento(id, empresa_Global);
-                return Json("Removido com sucesso!");
+                var mensagem = _equipamentoService.RemoverEquipamento(id, empresa_Global);
+                return Json(mensagem);
             }
             catch (Exception ex)
             {

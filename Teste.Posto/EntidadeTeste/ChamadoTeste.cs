@@ -10,10 +10,11 @@ namespace Teste.Posto.EntidadeTeste
 {
     public class ChamadoTeste
     {
+        [Fact]
         public void pegarChamado()
         {
             // Arrange
-            Chamado teclado = new Chamado(1,1,1,1,"2019/12/03","2019/12/25","2020/01/01","Rachadura","Fissura","cobre com cimento","resolveu","tempo de cura",1,"rodrigo","1");
+            Chamado teclado = new Chamado(1,1,1,1,new DateTime(),null,null,"Rachadura","Fissura",null,null,null,null,"rodrigo",true);
             teclado.Id_Equipamento = 1;
             PostoContext postoContext = new PostoContext();
             // Act

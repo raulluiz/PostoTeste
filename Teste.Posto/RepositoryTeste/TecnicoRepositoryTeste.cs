@@ -8,9 +8,9 @@ using System.Text;
 
 namespace Teste.Posto.RepositoryTeste
 {
-    class TecnicoRepositoryTeste : BaseRepository<Tecnico>, ITecnicoRepository
+    public class TecnicoRepositoryTeste : BaseRepository<Tecnico>, ITecnicoRepository
     {
-        protected TecnicoRepositoryTeste(PostoContext dbContext) : base(dbContext)
+        public TecnicoRepositoryTeste(PostoContext dbContext) : base(dbContext)
         {
         }
     }
