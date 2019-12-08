@@ -10,7 +10,7 @@ namespace Teste.Posto.RepositoryTeste
 {
     class ClienteRepositoryTeste : BaseRepository<Cliente>, IClienteRepository
     {
-        protected ClienteRepositoryTeste(PostoContext dbContext) : base(dbContext)
+        public ClienteRepositoryTeste(PostoContext dbContext) : base(dbContext)
         {
         }
     }

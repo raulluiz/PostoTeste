@@ -6,6 +6,8 @@ namespace Posto.ApplicationCore.Entities
 {
     public class Chamado
     {
+        private string v;
+
         [Key]
         public int Id_Chamado { get; set; }
 
@@ -26,6 +28,7 @@ namespace Posto.ApplicationCore.Entities
         public string Nome_Cliente { get; set; }
         public string Nome_Tecnico { get; set; }
         public bool Corretiva { get; set; }
+        public int Id_Equipamento { get; set; }
 
         public Chamado() { }
 
@@ -47,6 +50,11 @@ namespace Posto.ApplicationCore.Entities
             this.Id_Serie = Id_Serie;
             this.Nome_Cliente = Nome_Cliente;
             this.Corretiva = Corretiva;
+        }
+
+        public Chamado(string v)
+        {
+            this.v = v;
         }
 
         public void AtualizarChamadoTecnico(int? Id_Tecnico, DateTime? Data_Final, string Defeito_Encontrado_Tecnico, EnumStatus? Status, string Nome_Tecnico)

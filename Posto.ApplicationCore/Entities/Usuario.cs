@@ -1,4 +1,5 @@
 ﻿using Posto.ApplicationCore.Enum;
+using Posto.ApplicationCore.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +8,8 @@ namespace Posto.ApplicationCore.Entities
 {
     public class Usuario
     {
+        private IUsuarioService @object;
+
         public int Id_Usuario { get; set; }
         public string Nome { get; set; }
         public bool Ativo { get; set; }
@@ -34,6 +37,11 @@ namespace Posto.ApplicationCore.Entities
             this.Perfil = Perfil;
             this.Id_Usuario = Id_Usuario;
             this.Id_Endereco = Id_Endereco;
+        }
+
+        public Usuario(IUsuarioService @object)
+        {
+            this.@object = @object;
         }
 
         public void Inativar()

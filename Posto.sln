@@ -13,7 +13,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Posto.IoC", "Posto.IoC\Post
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Posto.Web", "Posto.Web\Posto.Web.csproj", "{597A260C-3C52-4313-9898-4C9F64C3BD8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste.Posto", "Teste.Posto\Teste.Posto.csproj", "{20776A48-3536-4090-A600-268265C4F4D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teste.Posto", "Teste.Posto\Teste.Posto.csproj", "{20776A48-3536-4090-A600-268265C4F4D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentos", "Documentos", "{7E15D67D-E550-4B35-AF22-EE365FE0BFE6}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Desktop\Análise de Cobertura.pdf = ..\..\Desktop\Análise de Cobertura.pdf
+		..\..\Downloads\Caso de uso cadastro de usuários.docx = ..\..\Downloads\Caso de uso cadastro de usuários.docx
+		..\..\Downloads\Caso de uso de chamados.docx = ..\..\Downloads\Caso de uso de chamados.docx
+		..\..\Downloads\Casos de teste.docx = ..\..\Downloads\Casos de teste.docx
+		..\..\Downloads\Detalhamento de Requisitos e Casos de Uso.docx = ..\..\Downloads\Detalhamento de Requisitos e Casos de Uso.docx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
